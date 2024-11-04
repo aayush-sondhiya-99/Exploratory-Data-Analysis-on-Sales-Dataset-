@@ -1,6 +1,3 @@
-EXPLORATORY DATA ANALYSIS ON SALES DATASET 
-
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Question 1 - What is the total sales volume and revenue generated on 2018 and 2019 year ? 
 In 2018, the company generated a revenue of **41,43,08,943**, while in 2019, the revenue decreased to 33,64,52,114. This decline in sales for 2019 represents an 18.79% drop compared to 2018.
