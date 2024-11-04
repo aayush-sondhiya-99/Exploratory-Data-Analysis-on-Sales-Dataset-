@@ -1,6 +1,4 @@
-EXPLORATORY DATA ANALYSIS ON SALES DATASET 
 
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Question 1 - What is the total sales volume and revenue generated on 2018 and 2019 year ? 
 
 SELECT year,sum(sales_qty) as total_sales_volume ,sum(sales_amount) as total_revenue 
