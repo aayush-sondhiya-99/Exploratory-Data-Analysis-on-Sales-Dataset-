@@ -1,0 +1,127 @@
+EXPLORATORY DATA ANALYSIS ON SALES DATASET 
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Question 1 - What is the total sales volume and revenue generated on 2018 and 2019 year ? 
+
+SELECT year,sum(sales_qty) as total_sales_volume ,sum(sales_amount) as total_revenue 
+   FROM transactions
+     INNER JOIN date ON transactions.order_date = date.date
+	 where date.year in (2018 , 2019)
+  GROUP BY date.year 
+  ORDER BY (sum(transactions.sales_amount)) DESC;
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Question 2 - Who are the top 10 customers by total spending , and what was their average order size?
+
+CREATE VIEW top_customers AS
+ SELECT customers.customer_name,
+    customers.customer_type,
+    sum(transactions.sales_qty) AS sales_volume,
+    round(sum(transactions.sales_amount)) AS sales_revenue,
+    round(sum(transactions.sales_amount) / sum(transactions.sales_qty)::double precision) AS average_revenue_per_order
+   FROM transactions
+     INNER JOIN customers ON transactions.customer_code::text = customers.customer_code::text
+  GROUP BY transactions.customer_code, customers.customer_name, customers.customer_type
+  ORDER BY (sum(transactions.sales_amount)) DESC;
+
+SELECT * from top_customers limit 10 ;
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Question 3 - What are the revenue contributions of 'Brick and Mortar' versus 'Ecommerce' customer types?
+
+ SELECT customer_type,
+    sum(sales_volume) AS sales_volume,
+    sum(sales_revenue) AS sales_revenue,
+    round(sum(sales_revenue) / sum(sales_volume)::double precision) AS average_revenue_per_order
+   FROM top_customers
+  GROUP BY customer_type
+  ORDER BY (sum(sales_revenue)) DESC;
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Question 4 - How are sales distributed across different regions? Are there any areas where company should focus on marketing efforts?
+
+SELECT 
+    markets.zone,
+    SUM(transactions.sales_amount) AS total_revenue,
+    SUM(transactions.sales_qty) AS sales_volume,
+    ROUND(SUM(transactions.sales_amount) / SUM(transactions.sales_qty)) AS average_revenue_per_order
+FROM 
+    transactions
+INNER JOIN 
+    markets 
+ON 
+    transactions.market_code = markets.markets_code
+GROUP BY 
+    markets.zone
+ORDER BY 
+    SUM(transactions.sales_amount) DESC;
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Question 5 - What were the total sales and revenue for each month, and how does it vary year by year?
+
+SELECT date.year, date.month_name,
+EXTRACT(month FROM to_date(date.month_name::text, 'Month'::text)) AS month_number,
+sum(transactions.sales_qty) AS sales_volume,
+sum(transactions.sales_amount) AS total_revenue
+FROM transactions
+JOIN date ON transactions.order_date = date.date
+GROUP BY date.year, date.month_name
+ORDER BY date.year, (EXTRACT(month FROM to_date(date.month_name::text, 'Month'::text)));
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Question 6 - Which products are the top sellers ?
+
+SELECT
+transactions.product_code,
+product_type, ROUND(SUM(sales_amount) / SUM(sales_qty)) AS product_cost , 
+SUM(sales_qty) AS quantity_sold , SUM(sales_amount) AS revenue_generated
+FROM transactions INNER JOIN products ON transactions.product_code = products.product_code
+GROUP BY transactions.product_code,
+product_type ORDER BY revenue_generated DESC LIMIT 5;
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Question 7 - How do sales figures differ between weekdays and weekends?
+
+SELECT
+TO_CHAR(date.date, 'Day') AS day_name,
+SUM(transactions.sales_qty) AS sales_volume,
+SUM(transactions.sales_amount) AS revenue
+FROM
+transactions
+INNER JOIN
+date
+ON
+transactions.order_date = date.date
+GROUP BY
+day_name;
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Question 8  - Which cities have the highest average order value?
+
+select markets.markets_name , round(sum(sales_amount)/sum(sales_qty)) as average_order_value 
+from transactions inner join markets on transactions.market_code = markets.markets_code
+group by market_code , markets.markets_name order by round(sum(sales_amount)/sum(sales_qty)) desc
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Question 9  - What are the top 10 customers with the highest average order values in each market, and how do these values compare across different markets?
+
+SELECT DISTINCT 
+    markets.markets_name, 
+    customers.customer_code, 
+    ROUND(SUM(sales_amount) / NULLIF(SUM(sales_qty), 0)) AS average_order_value 
+FROM 
+    transactions 
+INNER JOIN 
+    markets ON transactions.market_code = markets.markets_code 
+INNER JOIN 
+    customers ON transactions.customer_code = customers.customer_code 
+GROUP BY 
+    markets.markets_name, 
+    customers.customer_code, 
+    transactions.market_code 
+ORDER BY 
+    average_order_value DESC 
+LIMIT 10;
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+

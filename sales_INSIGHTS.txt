@@ -1,0 +1,59 @@
+EXPLORATORY DATA ANALYSIS ON SALES DATASET 
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Question 1 - What is the total sales volume and revenue generated on 2018 and 2019 year ? 
+In 2018, the company generated a revenue of **41,43,08,943**, while in 2019, the revenue decreased to 33,64,52,114. This decline in sales for 2019 represents an 18.79% drop compared to 2018.
+This decrease highlights a significant challenge for the company, prompting a need to analyze the factors that contributed to the decline. Possible reasons could include increased competition, changes in market demand, or shifts in consumer behavior.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Question 2 - Who are the top 10 customers by total spending , and what was their average order size?
+The top three customers generating the highest revenue are Electricalsara Stores, Electicalslytical, and Excel Stores. Electricalsara Stores stands out significantly, contributing 41,23,05,769, which is 833.74% of the revenue from Electicalslytical, the second-highest customer.
+This indicates a strong loyalty and preference for our products among Electricalsara Stores. Given their substantial contribution to our revenue, it’s crucial to nurture this relationship through targeted marketing and personalized service. By focusing on the needs of Electricalsara Stores, we can not only maintain their loyalty but also potentially increase their purchases. Therefore, Electricalsara Stores is our most important customer, and we should prioritize efforts to enhance our partnership with them.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Question 3 - What are the revenue contributions of 'Brick and Mortar' versus 'Ecommerce' customer types?
+Brick and Mortar customers account for 75.63% of the company's total revenue. It is crucial for the company to maintain a healthy relationship with these customers, as they are vital to our busniess.Prioritizing these relationships will not only secure our current revenue but also create opportunities for future growth
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Question 4 - How are sales distributed across different regions? Are there any areas where company should focus on marketing efforts?
+The North Region is generating the highest revenue, contributing over **65%** of the total revenue for the company. In contrast, the South Region has generated the least revenue, indicating a significant opportunity for growth.
+To enhance overall performance, the company should prioritize efforts to expand sales in the South Region
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Question 5 - What were the total sales and revenue for each month, and how does it vary year by year?
+Revenue increased from 2017 to 2018 but declined significantly in 2019 and 2020 . The highest revenue recorded was in November 2017 and January 2018, with peaks during fall and winter months (October to January).
+To boost sales performance, the company should focus marketing efforts on the peak months from October to January and develop targeted strategies for low-performing periods like May and June. Additionally, staying informed about market changes and external influences on consumer behavior will help ensure adaptability and competitiveness
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Question 6 - Which products are the top sellers ?
+Prod040 is the highest revenue-generating product, with total revenue of 23,581,969. This suggests it is a significant contributor to the company's overall sales . Prod159, although categorized as a Distribution product, generated 17,660,106, indicating it is a strong player in the market.
+Prod090 had the highest sales quantity at 279,226 units sold, which may indicate strong customer demand. However, its total revenue of 13,418,817 suggests that its price point is relatively low
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Question 7 - How do sales figures differ between weekdays and weekends?
+Friday has the highest sales volume, with a total of 591,697 units sold, generating the highest revenue of 264,163,551. This suggests that Friday might be a peak day for sales, possibly due to end-of-week shopping habits or promotional events.
+Saturday and Sunday show significantly lower sales . This suggests that weekends are slower in sales compared to weekdays, possibly due to a customer base that shops primarily on workdays or weekday-focused business operations
+Weekdays (Monday to Friday) are significantly stronger in both sales volume and revenue than weekends. This might imply that most customers are weekday shoppers, or perhaps the store’s promotions or advertising efforts focus on weekdays
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Question 8  - Which cities have the highest average order value?
+Kanpur has the highest average order value at 815, followed closely by Patna at 803. Bhopal appears twice in your data, with values of 639 and 484, indicating varying spending patterns.
+Chennai (356), Nagpur (207), Surat (151), Bengaluru (147), Hyderabad (95), Lucknow (83), Kochi (73), and Bhubaneshwar (57) have lower AOVs compared to the leaders. These cities may require additional strategies to increase spending per order. This could include targeted promotions, loyalty programs, or upselling initiatives.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Question 9  - What are the top 10 customers with the highest average order values in each market, and how do these values compare across different markets?
+Customer Cus011 is notable as they appear multiple times across different markets with high average order values (1690 in Bengaluru and 1043 in Bhopal). Customers who are active in multiple markets tend to have high average order values, suggesting brand loyalty or preference for certain products/services across different regions. 
+The repeated appearance of certain customers in multiple markets suggests loyalty, which can be leveraged for targeted marketing campaigns.
+Ahmedabad appears multiple times (3 occurrences), indicating that it is a significant market for different customers (Cus011, Cus004, Cus027) with varied average order values.
+Kanpur and Mumbai show potential for growth since they have diverse customer segments. Exploring promotional strategies could enhance average order values.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
